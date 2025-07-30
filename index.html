@@ -17,7 +17,6 @@
       overflow: hidden;
     }
 
-    /* Use custom vh unit to support mobile browsers properly */
     :root {
       --vh: 100vh;
     }
@@ -49,32 +48,19 @@
       font-size: 2rem;
     }
 
-    /* Optional: Make video fit better on small screens */
     @media (max-width: 768px) {
       .video-container video {
         object-fit: contain;
       }
     }
   </style>
-
-  <script>
-    // Fix 100vh on mobile browsers
-    function setVhUnit() {
-      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-
-    }
-
-    window.addEventListener('resize', setVhUnit);
-    window.addEventListener('load', setVhUnit);
-  </script>
 </head>
-
 <body>
 
   <!-- Intro Video -->
   <div class="video-container" id="introVideo">
-    <video autoplay muted playsinline>
-      <source src="assets/22.mp4" type="video/mp4" />
+    <video autoplay muted playsinline id="introVid">
+      <source src="" type="video/mp4" id="videoSource" />
       Your browser does not support the video tag.
     </video>
   </div>
@@ -85,23 +71,51 @@
   </div>
 
   <script>
-    const video = document.querySelector('video');
-    const intro = document.getElementById('introVideo');
-    const main = document.getElementById('mainContent');
+    // Fix 100vh on mobile
+    function setVhUnit() {
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    }
 
-    // When video ends, loop it from 3s
-    video.addEventListener('ended', () => {
-      video.currentTime = 3;
-      video.play();
+    // Swap video source based on screen size
+    function updateVideoSource() {
+      const isMobile = window.innerWidth <= 768;
+      const video = document.getElementById('introVid');
+      const source = document.getElementById('videoSource');
+      const currentSrc = source.getAttribute('src');
+      const newSrc = isMobile ? 'assets/mobile-video.mp4' : 'assets/22.mp4';
+
+      if (currentSrc !== newSrc) {
+        source.src = newSrc;
+        video.load();
+        video.play();
+      }
+    }
+
+    // Run on load and resize
+    window.addEventListener('resize', () => {
+      setVhUnit();
+      updateVideoSource();
     });
 
-    // After 12 seconds, show main content
-    setTimeout(() => {
-      main.style.display = 'flex';
-      intro.style.zIndex = '0'; // move video behind content
-      video.muted = true; // just in case
-    }, 12000);
-  </script>
+    window.addEventListener('load', () => {
+      setVhUnit();
+      updateVideoSource();
 
+      const video = document.getElementById('introVid');
+      const intro = document.getElementById('introVideo');
+      const main = document.getElementById('mainContent');
+
+      video.addEventListener('ended', () => {
+        video.currentTime = 3;
+        video.play();
+      });
+
+      setTimeout(() => {
+        main.style.display = 'flex';
+        intro.style.zIndex = '0';
+        video.muted = true;
+      }, 12000);
+    });
+  </script>
 </body>
 </html>
