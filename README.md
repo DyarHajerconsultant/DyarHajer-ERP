@@ -15,7 +15,7 @@ Built with Spring Boot (backend) and Angular (frontend)
 
 Scalable structure designed for engineering consulting firms
 
-                        +--------------------------+
+                                     +--------------------------+
                         |      Web Dashboard       |
                         |  (Admin + Engineers)     |
                         +-----------+--------------+
@@ -35,9 +35,11 @@ Scalable structure designed for engineering consulting firms
     |               |                  |                |             |
     v               v                  v                v             v
 +-----------------------------------------------------------------------------+
-|                              Data Storage (PostgreSQL + Vector DB)          |
+|                              Data Storage (PostgreSQL + Vector DB)         |
 |                        + Logs, Projects, Clients, Team, Reports             |
 +-----------------------------------------------------------------------------+
+
+
 
 الاسم	الوظيفة
 # Agent1 - ChatBot	
