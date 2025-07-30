@@ -15,33 +15,11 @@ Built with Spring Boot (backend) and Angular (frontend)
 
 Scalable structure designed for engineering consulting firms
 
-                                     +--------------------------+
-                        |      Web Dashboard       |
-                        |  (Admin + Engineers)     |
-                        +-----------+--------------+
-                                    |
-                                    v
-                        +-----------+--------------+
-                        |   API Gateway (Spring)   |
-                        +-----------+--------------+
-                                    |
-    +-------------------------------+--------------------------------+
-    |               |                  |                |             |
-    v               v                  v                v             v
-+--------+     +------------+     +-----------+   +-----------+  +-------------+
-| Agent1 |     |  Agent2    |     |  Agent3   |   |  Agent4   |  |    Agent5   |
-| Chat   |     | Scheduler  |     | Manager   |   | Analyst   |  | Recommender |
-+--------+     +------------+     +-----------+   +-----------+  +-------------+
-    |               |                  |                |             |
-    v               v                  v                v             v
-+-----------------------------------------------------------------------------+
-|                              Data Storage (PostgreSQL + Vector DB)         |
-|                        + Logs, Projects, Clients, Team, Reports             |
-+-----------------------------------------------------------------------------+
+
+<img width="574" height="531" alt="Screenshot 2025-07-30 124034" src="https://github.com/user-attachments/assets/b278ad90-edbf-4550-b9e7-3e408e2ac18d" />
 
 
 
-الاسم	الوظيفة
 # Agent1 - ChatBot	
 # Agent2 - Scheduler	
 # Agent3 - Project Manager	
