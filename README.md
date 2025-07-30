@@ -2,7 +2,7 @@
 
 This repository contains a comprehensive ERP system featuring a modern user interface and centralized admin dashboard. The system is modular and designed to manage multiple departments—such as Projects, HR, CRM, Accounting, and more—with seamless integration and intelligent automation.
 
-#🔧 Features:
+# 🔧 Features:
 Clean, responsive UI for users and admins
 
 Centralized dashboard for department management
