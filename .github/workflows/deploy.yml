@@ -13,12 +13,15 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Debug Host
+        run: echo "Deploying to ${{ secrets.USER }}@${{ secrets.HOST }}"
+
       - name: Setup SSH
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H ${{ secrets.HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan -H ${{ secrets.HOST }} 2>/dev/null >> ~/.ssh/known_hosts
 
       - name: Deploy static files to EC2
         run: |
